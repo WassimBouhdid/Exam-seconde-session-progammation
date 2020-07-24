@@ -1,0 +1,48 @@
+* {
+font-family: Arial, Helvetica, sans-serif;
+
+}
+
+
+h1 {
+    text-align: center;
+    font-size: 50px;
+}
+
+input {
+    background-color: white;
+}
+
+label{
+    font-weight: bolder;
+    display:inline-block;
+    width: 210px;
+    text-align: left;
+}
+
+form {
+    /* Encadré pour voir les limites du formulaire */
+    padding: 1em;
+    border: 1px solid rgb(14, 172, 28);
+    border-radius: 1em;
+    float: left;
+  }
+  
+  form div + div {
+    margin-top: 1em;
+  }
+  
+  textarea {
+    vertical-align: top;
+    height: 5em;
+    overflow: auto;
+  }
+  
+  form .button {
+    padding-left: 215px; /* même taille que les étiquettes */
+  }
+  
+
+
+
+
