@@ -1,5 +1,6 @@
 * {
 font-family: Arial, Helvetica, sans-serif;
+background-color: rgb(59, 67, 182);
 
 }
 
@@ -7,10 +8,13 @@ font-family: Arial, Helvetica, sans-serif;
 h1 {
     text-align: center;
     font-size: 50px;
+    font-weight: bolder;
 }
 
 input {
-    background-color: white;
+  width: 285px;
+  border: 2px solid black;
+  background-color: white;
 }
 
 label{
@@ -22,25 +26,49 @@ label{
 
 form {
     /* Encadré pour voir les limites du formulaire */
-    padding: 1em;
-    border: 1px solid rgb(14, 172, 28);
+    padding: 10px;
+    border: 3px solid rgb(0, 0, 0);
     border-radius: 1em;
     float: left;
+    width: 510px;
   }
   
-  form div + div {
+form div + div {
     margin-top: 1em;
   }
   
-  textarea {
+textarea {
     vertical-align: top;
-    height: 5em;
+    height: 150px;
+    width: 285px;
     overflow: auto;
+    border: 2px solid black;
+    background-color: white;
   }
   
   form .button {
     padding-left: 215px; /* même taille que les étiquettes */
   }
+
+  #promo{
+    float: right;
+    width: 1350px;
+    height: 150px;
+    box-sizing: border-box;
+    display: inline-block;
+    border: 3px solid rgb(0, 0, 0);
+    padding: 10px;
+    font-size: 20px;
+    font-weight: normal;
+    border-radius: 1em;
+  }
+
+#titrePromo{ text-align: center;
+    font-size: 30px ;
+    font-weight: bolder ;
+  }
+
+
   
 
 
