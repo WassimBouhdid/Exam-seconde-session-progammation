@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="fr">
 
 <head>
@@ -10,54 +11,104 @@
 </head>
 
 <body>
-    <header>
-<h1>Project seconde session</h1>
-<hr>
-    </header>
-    <form>
-        <h2>Formulaire</h2>
-        <div>
-            <label classe="Nom">Nom :</label>
-            <input type="texte" id="Nom">
+    <div>
+        <header>
+            <h1>Project seconde session</h1>
+            <hr>
+        </header>
+    </div>
+    <div>
+        <form>
+            <h2>Formulaire</h2>
+            <div>
+                <label classe="nom">Nom :</label>
+                <input type="texte" id="nomInput" required>
+            </div>
+            <div>
+                <label classe="prénom">Prénom :</label>
+                <input type="texte" id="prénomInput" required>
+            </div>
+            <div>
+                <label classe="produit">Produit :</label>
+                <select name="choisissez le rpoduit" id="prodInput" required>
+                    <option value="" default disabled selected>choisissez un poduit</option>
+                    <option value="pomme">pomme</option>
+                    <option value="poire">poire</option>
+                    <option value="fraise">fraise</option>
+                    <option value="pêche">pêche</option>
+                    <option value="abricot">abricot</option>
+                    <option value="banane">banane</option>
+                    <option value="raisin">raisin</option>
+                    <option value="ananas">ananas</option>
+                    <option value="mangue">mangue</option>
+                    <option value="orange">orange</option>
+                </select>
+            </div>
+            <div>
+                <label classe="quantité">Quantité :</label>
+                <select name="choisissez une quantité" id="quantInput" required>
+                    <option value="" default disabled selected>choisissez une quantité</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+            </div>
+            <div>
+                <label classe="prix">Prix :</label>
+                <input type="texte" id="prixInput" required> €
+            </div>
+            <div>
+                <label classe="adresse">Adresse :</label>
+                <input type="texte" id="adresseInput" required>
+            </div>
+            <div>
+                <label classe="mail">Mail :</label>
+                <input type="texte" id="mailInput" required>
+            </div>
+            <div>
+                <label classe="message">Message supplémentaire :</label>
+                <textarea id="messageSuppInput"></textarea>
+            </div>
+            <div class="button">
+                <button type="submit" onclick="test()">Envoyer</button>
+            </div>
+        </form>
+    </div>
+    <div>
+        <fieldset id="promo">
+            <legend id="titrePromo">PROMOTION !!!</legend>
+            <span>BlaBlaBlaBlaBlaBla</span>
+        </fieldset>
+    </div>
+    <div>
+        <table>
+            <thead>
+                <th id="nomTableau">Nom</th>
+                <th id="PrenomTableau">Prénom</th>
+                <th id="adresseTableau">Adresse</th>
+                <th id="mailTableau">Mail</th>
+                <th id="produitTableau">Produit</th>
+                <th id="quantiteTableau">Quantité</th>
+                <th id="prixTableau">Prix</th>
+                <th id="infoTableau">information supplémentaire</th>
+                <th id="supprTableau">suppr</th>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+        <div id="prixTotal">
+            prix total :
+            <span id="total"></span> €
         </div>
-        <div>
-            <label classe="Prénom">Prénom :</label>
-            <input type="texte" id="prénom">
-        </div>
-        <div>
-            <label classe="Produit">Produit :</label>
-            <input type="texte" id="produit">
-        </div>
-        <div>
-            <label classe="Quantité">Quantité :</label>
-            <input type="texte" id="quantité">
-        </div>
-        <div>
-            <label classe="Prix">Prix :</label>
-            <input type="texte" id="prix">
-        </div>
-        <div>
-            <label classe="Adresse">Adresse :</label>
-            <input type="texte" id="quantité">
-        </div>
-        <div>
-            <label classe="Mail">Mail :</label>
-            <input type="texte" id="quantité">
-        </div>
-        <div>
-            <label classe="message">Message supplémentaire :</label>
-            <textarea></textarea>
-        </div>
-        <div class="button">
-            <button type="submit" >Envoyer</button>
-        </div>
-    </form>
-    <fieldset id="promo">
-        <legend id="titrePromo">PROMOTION !!!</legend>
-        blablablablabla
-    </fieldset>
+    </div>
     <footer>
-
     </footer>
 </body>
 

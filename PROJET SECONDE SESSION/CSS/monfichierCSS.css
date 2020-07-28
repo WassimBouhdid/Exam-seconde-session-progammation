@@ -1,9 +1,30 @@
-* {
-font-family: Arial, Helvetica, sans-serif;
-background-color: rgb(59, 67, 182);
+/* ==========================================================================
+   #REGLE GENERALE
+   ========================================================================== */
 
+* {
+  font-family: Arial, Helvetica, sans-serif;  
+  padding: 0;
+  margin: 0;
 }
 
+html{
+  overflow: auto;
+
+  background-color: rgb(97, 119, 134);
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+div{
+  box-sizing: border-box;
+}
+
+/* ==========================================================================
+   #TITRE
+   ========================================================================== */
 
 h1 {
     text-align: center;
@@ -11,66 +32,155 @@ h1 {
     font-weight: bolder;
 }
 
+/* ==========================================================================
+   #FORMULAIRE
+   ========================================================================== */
+
+input,textarea {
+
+  font-size: 15px;
+
+}
+
 input {
-  width: 285px;
-  border: 2px solid black;
+  height: 25px;
+  width: 245px;
+  border: 1px solid black;
   background-color: white;
 }
 
 label{
-    font-weight: bolder;
-    display:inline-block;
-    width: 210px;
-    text-align: left;
+  font-weight: bolder;
+  display:inline-block;
+  width: 225px;
+  text-align: left;
 }
 
 form {
-    /* Encadré pour voir les limites du formulaire */
-    padding: 10px;
-    border: 3px solid rgb(0, 0, 0);
-    border-radius: 1em;
-    float: left;
-    width: 510px;
-  }
+  padding: 10px;
+  border: 1px solid rgb(0, 0, 0);
+  border-radius: 1em;
+  float: left;
+  width: 510px;
+  margin-bottom: 10px;
+  margin-top: 25px;
+}
   
 form div + div {
-    margin-top: 1em;
-  }
+  margin-top: 1em;
+}
   
 textarea {
-    vertical-align: top;
-    height: 150px;
-    width: 285px;
-    overflow: auto;
-    border: 2px solid black;
-    background-color: white;
-  }
+  vertical-align: top;
+  height: 150px;
+  width: 250px;
+  overflow: auto;
+  border: 1px solid black;
+  background-color: white;
+}
   
-  form .button {
-    padding-left: 215px; /* même taille que les étiquettes */
-  }
+form .button {
+  padding-left: 230px;
+}
 
-  #promo{
-    float: right;
-    width: 1350px;
-    height: 150px;
-    box-sizing: border-box;
-    display: inline-block;
-    border: 3px solid rgb(0, 0, 0);
-    padding: 10px;
-    font-size: 20px;
-    font-weight: normal;
-    border-radius: 1em;
-  }
-
-#titrePromo{ text-align: center;
-    font-size: 30px ;
-    font-weight: bolder ;
-  }
-
-
+/* ==========================================================================
+   #ZONEPROMO
+   ========================================================================== */
   
+#promo{
+  width: 1380px;
+  height: 150px;
+  display: inline-block;
+  border: 1px solid rgb(0, 0, 0);
+  font-size: 20px;
+  font-weight: normal;
+  border-radius: 1em;
+  margin-left: 20px;
+  margin-top: 15px;
+  }
 
+#titrePromo{ 
+  text-align: center;
+  font-size: 30px ;
+  font-weight: bolder ;
+}
 
+span{
+  padding: 10px;
+}
 
+/* ==========================================================================
+   #tableau
+   ========================================================================== */
 
+table, th, td {
+  text-align: center;
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+table {
+  background: white;
+  display: table;
+  width: 99%;
+  margin-left: 10px;
+}
+
+th{
+  background-color: gray;
+}
+
+td{
+  height: 20px;
+}
+
+th#nomTableau{
+ width: 7%;
+}
+
+th#PrenomTableau{
+  width: 7%;
+}
+
+th#adresseTableau{
+  width: 20%;
+}
+
+th#mailTableau{
+  width: 20%;
+}
+
+th#produitTableau{
+  width:10% ;
+}
+
+th#quantiteTableau{
+  width: 10%;
+}
+
+th#prixTableau{
+  width:5% ;
+}
+
+th#infoTableau{
+  width:16%;
+}
+
+th#supprTableau{
+  width: 5%;
+}
+
+#prixTotal {
+  font-size: normal ;
+  font-weight: bolder;
+  width: 500px;
+  float: right;
+  text-align: center;
+  border: 1px solid black
+}
+
+#total{
+  font-size: normal ;
+  font-weight: bolder;
+  color: red;
+}
