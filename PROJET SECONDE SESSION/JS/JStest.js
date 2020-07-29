@@ -118,7 +118,7 @@ function envoyerFormulaire(){
 
 function listerPrix(){
 
-    let tableau="<table><thead><th id="+"fruit"+">Fruit</th><th id="+prix+">Prix</th></thead><tbody>"
+    let tableau="<table id="+"'tableauPrix'"+"><thead><th id="+"'fruit'"+">Fruit</th><th id="+prix+">Prix</th></thead><tbody id="+"'corpsTableauPrix'"+">"
 
     let indice=Object.keys(objectFruits)
 

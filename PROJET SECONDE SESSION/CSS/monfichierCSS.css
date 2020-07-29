@@ -114,13 +114,12 @@ span{
    ========================================================================== */
 
 table, th, td {
+  border:1px solid black;
   text-align: center;
-  border: 1px solid black;
   border-collapse: collapse;
 }
 
-table {
-  background: white;
+div#tableauInfo table {
   display: table;
   width: 99%;
   margin-left: 10px;
@@ -189,6 +188,21 @@ td{
   background-color: rgb(196, 196, 196)
 }
 
-#listePrix{
+/* ==========================================================================
+   #tableau DES PRIX
+   ========================================================================== */
+
+table#tableauPrix{
   display: inline-block;
+  width: 800px;
+  height: 352px;
+  margin: 10px 50px;
+}
+
+table#tableauPrix th{
+  width: 400px;
+}
+
+tbody#corpsTableauPrix tr{
+  height: 33px;
 }
