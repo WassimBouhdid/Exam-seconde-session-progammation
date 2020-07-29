@@ -10,7 +10,7 @@
     </script>
 </head>
 
-<body>
+<body onload="listerPrix();">
     <div>
         <header>
             <h1>Project seconde session</h1>
@@ -77,32 +77,35 @@
                 <textarea id="messageSuppInput"></textarea>
             </div>
             <div class="button">
-                <button type="submit" onclick="test()">Envoyer</button>
+                <button type="button" onclick="envoyerFormulaire()">Envoyer</button>
             </div>
         </form>
     </div>
+    
     <div>
         <fieldset id="promo">
             <legend id="titrePromo">PROMOTION !!!</legend>
             <span>BlaBlaBlaBlaBlaBla</span>
         </fieldset>
     </div>
+    <div id="listePrix">
+    </div>
     <div>
         <table>
             <thead>
                 <th id="nomTableau">Nom</th>
                 <th id="PrenomTableau">Prénom</th>
-                <th id="adresseTableau">Adresse</th>
-                <th id="mailTableau">Mail</th>
                 <th id="produitTableau">Produit</th>
                 <th id="quantiteTableau">Quantité</th>
                 <th id="prixTableau">Prix</th>
+                <th id="adresseTableau">Adresse</th>
+                <th id="mailTableau">Mail</th>
                 <th id="infoTableau">information supplémentaire</th>
                 <th id="supprTableau">suppr</th>
             </thead>
-            <tbody>
+            <tbody id="tableau">
             </tbody>
-        </table>
+        </table >
         <div id="prixTotal">
             prix total :
             <span id="total"></span> €

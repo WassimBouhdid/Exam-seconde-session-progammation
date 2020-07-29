@@ -88,7 +88,7 @@ form .button {
    ========================================================================== */
   
 #promo{
-  width: 1380px;
+  width: 1360px;
   height: 150px;
   display: inline-block;
   border: 1px solid rgb(0, 0, 0);
@@ -127,7 +127,7 @@ table {
 }
 
 th{
-  background-color: gray;
+  background-color: rgb(155, 155, 155)
 }
 
 td{
@@ -183,4 +183,12 @@ th#supprTableau{
   font-size: normal ;
   font-weight: bolder;
   color: red;
+}
+
+td{
+  background-color: rgb(196, 196, 196)
+}
+
+#listePrix{
+  display: inline-block;
 }
