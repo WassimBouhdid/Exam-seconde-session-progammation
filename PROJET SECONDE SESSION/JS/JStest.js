@@ -1,30 +1,50 @@
 "use strict"
 
+
+
  // prix 1kg de fruit dans des constante
 
-const BANANE=2.00
-const MANGUE=4.98
-const ANANAS=2.20
-const POIRE=2.49
-const POMME=2.89
-const RAISIN=3.99
-const FRAISE=6.99
-const PECHE=3.99
-const ABRICOT=5.95
-const ORANGE=1.95
+const BANANE=2.00;
+const MANGUE=4.98;
+const ANANAS=2.20;
+const POIRE=2.49;
+const POMME=2.89;
+const RAISIN=3.99;
+const FRAISE=6.99;
+const PECHE=3.99;
+const ABRICOT=5.95;
+const ORANGE=1.95;
+
+
+
+
+// réduction
+
+const REDUCTION_MANGUE=0.75; // 25%
+const REDUCTION_ABRICOT=0.70; // 30%
+const REDUCTION_BANANE=0.90; // 10%
+const REDUCTION_FRAISE=0.85; // 15%
+
+
+
+
 
 // création d'un array contenant les livraisons créé par la fonctions envoyerFormulaire()
 
-
+let prix=0;
+let total=0;
 let identifiant = 0;
 let nom;
 let prénom;
 let produit;
 let quantité;
-let prix=0;
 let adresse;
 let mail;
 let messageSupplémentaire;
+
+
+
+
 
 // création des variables qui contiendront les objets utilisés ci-dessous
 
@@ -52,9 +72,15 @@ let objectFormulaire={
     MessageSupplémentaire : undefined,
 };
 
+
+
+
 // création d'un array qui va contenir les livraison
 
-let arrayLivraison=[]
+let arrayLivraison=[];
+
+
+
 
 
 /* cette fonction me permet de récuperer la value de chaqu'un des champs et de les insérer dans un object */
@@ -101,9 +127,23 @@ function envoyerFormulaire(){
         prix=ORANGE*Number(quantité)
     }
 
-    prix=prix.toFixed(2)
+    if(document.getElementById("prodInput").value=="mangue" && quantité >= 3){
+        prix*=REDUCTION_MANGUE;
+    }
+    else if(document.getElementById("prodInput").value=="abricot" && quantité >= 10){
+        prix*=REDUCTION_ABRICOT
+    }
+    else if(document.getElementById("prodInput").value=="banane" && quantité >= 6){
+        prix*=REDUCTION_BANANE
+    }
+    else if(document.getElementById("prodInput").value=="fraise" && quantité >= 2){
+        prix*=REDUCTION_FRAISE
+    }
 
-        // console.log(prix)
+    total+=Number(prix)
+    
+    document.getElementById("total").innerHTML=total.toFixed(2) // affichage du total
+         
         // console.log(Number(quantité)*BANANE)
     adresse=document.getElementById("adresseInput").value;
         //console.log(adresse)
@@ -154,9 +194,19 @@ function envoyerFormulaire(){
         }
 }
 
+
+
+
+// FONCTION SUPPRIMER UNE LIGNE DE COMMANDE
+
+
+
 function supprimerCommande (){
-    let patate
+    arrayLivraison.splice(identifiant,1)
 }
+
+
+
 
 
 /* TERMINER !!! il reste plus qu'à corriger les erreurs potentielles */
@@ -180,5 +230,13 @@ function listerPrix(){
 
     tableau+="</tbody></table>";
     document.getElementById("listePrix").innerHTML+=tableau;
+
+}
+
+// FONCTION AFFICHER LE TOTAL EN DESSOUS DU TABLEAU
+
+function afficherTotal(){
+
+document.getElementById("total").innerHTML=total.toFixed(2) // permet d'afficher 0.00 au lancement de la page au niveau du prix total en dessous du tableau
 
 }

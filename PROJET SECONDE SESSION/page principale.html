@@ -10,7 +10,7 @@
     </script>
 </head>
 
-<body onload="listerPrix();">
+<body onload="listerPrix(),afficherTotal()">
     <div>
         <header>
             <h1>Project seconde session</h1>
@@ -58,7 +58,18 @@
                     <option value="8">8</option>
                     <option value="9">9</option>
                     <option value="10">10</option>
-                </select> killogramme(s)
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                    <option value="14">14</option>
+                    <option value="15">15</option>
+                    <option value="16">16</option>
+                    <option value="17">17</option>
+                    <option value="18">18</option>
+                    <option value="19">19</option>
+                    <option value="20">20</option>
+                </select> 
+                <span id="kilogrammes">kilogramme(s)</span>
             </div>
             <div>
                 <label classe="adresse">Adresse :</label>
@@ -81,7 +92,12 @@
     <div>
         <fieldset id="promo">
             <legend id="titrePromo">PROMOTION !!!</legend>
-            <span>BlaBlaBlaBlaBlaBla</span>
+            <span>
+                • A l'achat de plus de 3 kilogramme de mangue vous recevez une réduction de 25% <br>
+                • A l'achat de plus de 10 kilogramme d'abricot vous recevez une réduction de 30% <br>
+                • A l'achat de plus de 6 kilogramme de banane vous recevez une réduction de 10% <br>
+                • A l'achat de plus de 2 kilogramme de fraise vous recevez une réduction de 15% 
+            </span>
         </fieldset>
     </div>
     <div id="listePrix">

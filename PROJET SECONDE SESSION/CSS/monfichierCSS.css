@@ -82,6 +82,14 @@ form .button {
   padding-left: 230px;
 }
 
+select{
+  width: 150px;
+}
+
+span#kilogrammes{
+  font-size: normal;
+}
+
 /* ==========================================================================
    #ZONEPROMO
    ========================================================================== */
@@ -96,17 +104,14 @@ form .button {
   border-radius: 1em;
   margin-left: 20px;
   margin-top: 15px;
+  text-align: center;
   }
 
 #titrePromo{ 
-  text-align: center;
   font-size: 30px ;
   font-weight: bolder ;
 }
 
-span{
-  padding: 10px;
-}
 
 /* ==========================================================================
    #tableau
