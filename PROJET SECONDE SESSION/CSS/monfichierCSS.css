@@ -10,7 +10,6 @@
 
 html{
   overflow: auto;
-
   background-color: rgb(97, 119, 134);
 }
 
@@ -206,3 +205,7 @@ table#tableauPrix th{
 tbody#corpsTableauPrix tr{
   height: 33px;
 }
+
+/* ==========================================================================
+   boutton SUPPRIMER TABLEAU
+   ========================================================================== */
