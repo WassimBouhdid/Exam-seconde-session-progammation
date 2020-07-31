@@ -4,6 +4,7 @@
 
  // prix 1kg de fruit dans des constante
 
+
 const BANANE=2.00;
 const MANGUE=4.98;
 const ANANAS=2.20;
@@ -16,9 +17,8 @@ const ABRICOT=5.95;
 const ORANGE=1.95;
 
 
-
-
 // réduction
+
 
 const REDUCTION_MANGUE=0.75; // 25%
 const REDUCTION_ABRICOT=0.70; // 30%
@@ -26,27 +26,16 @@ const REDUCTION_BANANE=0.90; // 10%
 const REDUCTION_FRAISE=0.85; // 15%
 
 
-
-
-
 // création d'un array contenant les livraisons créé par la fonctions envoyerFormulaire()
 
-let prix=0;
+
+let prix;
 let total=0;
-let identifiant = 0;
-let nom;
-let prénom;
-let produit;
 let quantité;
-let adresse;
-let mail;
-let messageSupplémentaire;
-
-
-
 
 
 // création des variables qui contiendront les objets utilisés ci-dessous
+
 
 let objectFruits={
     Banane :BANANE,
@@ -61,6 +50,7 @@ let objectFruits={
     Orange : ORANGE,
 }
 
+
 let objectFormulaire={
     Nom : undefined,
     Prénom : undefined,
@@ -73,27 +63,43 @@ let objectFormulaire={
 };
 
 
-
-
 // création d'un array qui va contenir les livraison
+
 
 let arrayLivraison=[];
 
 
+// fonction réduction qui est executer dans la fonction envoyer formulaire
 
+
+function réduction(){
+
+    if(document.getElementById("prodInput").value=="mangue" && quantité >= 3){
+        prix*=REDUCTION_MANGUE;
+    }
+    else if(document.getElementById("prodInput").value=="abricot" && quantité >= 10){
+        prix*=REDUCTION_ABRICOT
+    }
+    else if(document.getElementById("prodInput").value=="banane" && quantité >= 6){
+        prix*=REDUCTION_BANANE
+    }
+    else if(document.getElementById("prodInput").value=="fraise" && quantité >= 2){
+        prix*=REDUCTION_FRAISE
+    }
+}
 
 
 /* cette fonction me permet de récuperer la value de chaqu'un des champs et de les insérer dans un object */
 
+
 function envoyerFormulaire(){
 
-    nom=document.getElementById("nomInput").value;
-        //console.log(nom)
-    prénom=document.getElementById("prénomInput").value;
-        // console.log(prénom)
-    produit=document.getElementById("prodInput").value;
-       // console.log(produit);
-       // console.log(typeof produit); 
+    let nom=document.getElementById("nomInput").value;
+
+    let prénom=document.getElementById("prénomInput").value;
+    
+    let produit=document.getElementById("prodInput").value;
+    
     quantité=document.getElementById("quantInput").value;
 
     if(document.getElementById("prodInput").value=="pomme"){
@@ -127,29 +133,20 @@ function envoyerFormulaire(){
         prix=ORANGE*Number(quantité)
     }
 
-    if(document.getElementById("prodInput").value=="mangue" && quantité >= 3){
-        prix*=REDUCTION_MANGUE;
-    }
-    else if(document.getElementById("prodInput").value=="abricot" && quantité >= 10){
-        prix*=REDUCTION_ABRICOT
-    }
-    else if(document.getElementById("prodInput").value=="banane" && quantité >= 6){
-        prix*=REDUCTION_BANANE
-    }
-    else if(document.getElementById("prodInput").value=="fraise" && quantité >= 2){
-        prix*=REDUCTION_FRAISE
-    }
 
-    total+=Number(prix)
+    réduction();
+
+
+    total+=Number(prix) // addition du prix de la commande envoyer A CHANGER !!
+
     
     document.getElementById("total").innerHTML=total.toFixed(2) // affichage du total
          
-        // console.log(Number(quantité)*BANANE)
-    adresse=document.getElementById("adresseInput").value;
-        //console.log(adresse)
-    mail=document.getElementById("mailInput").value;
-        //console.log(mail)
-    messageSupplémentaire=document.getElementById("messageSuppInput").value;
+    let adresse=document.getElementById("adresseInput").value;
+    
+    let mail=document.getElementById("mailInput").value;
+    
+    let messageSupplémentaire=document.getElementById("messageSuppInput").value;
         
         if(nom=="" || prénom=="" || produit=="" || quantité=="" || adresse=="" || mail=="" ){
 
@@ -157,17 +154,13 @@ function envoyerFormulaire(){
 
         }
         else{
-
-            identifiant++;
-
-            //console.log(messageSupplémentaire)
-            //alert("test")  
+  
 
             objectFormulaire.Nom=nom;
             objectFormulaire.Prénom=prénom;
             objectFormulaire.Produit=produit;
             objectFormulaire.Quantité=quantité;
-            objectFormulaire.Prix=prix+" €";
+            objectFormulaire.Prix=prix.toFixed(2)+" €";
             objectFormulaire.Adresse=adresse;
             objectFormulaire.Mail=mail;
             objectFormulaire.MessageSupplémentaire=messageSupplémentaire;
@@ -178,21 +171,26 @@ function envoyerFormulaire(){
 
             let ligne="";
 
-            var tr = "<tr id=" + identifiant + ">";
+            for(let f in arrayLivraison){
+
+            var tr = "<tr id=" + f + ">";
             
             for ( let i=0; i<indice.length;i++) {
 
-                tr += "<td>"+objectFormulaire[indice[i]]+"</td>";
+                tr += "<td>"+arrayLivraison[f][indice[i]]+"</td>";
 
             }
 
-            tr+="<td><button id="+"supprimer"+" type="+"button"+" onclick="+supprimerCommande()+">supprimer</button></td></tr>";
+            tr+="<td><button id="+f+" type="+"button"+" onclick="+"supprimerCommande()"+">supprimer</button></td></tr>";
             ligne+=tr;
+        }
 
-            document.getElementById("corpsTableau").innerHTML+=ligne;
+            document.getElementById("corpsTableau").innerHTML=ligne;
 
         }
 }
+
+
 
 
 
@@ -202,17 +200,19 @@ function envoyerFormulaire(){
 
 
 function supprimerCommande (){
-    arrayLivraison.splice(identifiant,1)
+
+
 }
 
 
 
-
-
-/* TERMINER !!! il reste plus qu'à corriger les erreurs potentielles */
+//
+// TERMINER !!  correction non effectué
+//
 
 //  FONCTION LISTE DES PRIX
 
+// execute cette onction au lancement de la page
 
 function listerPrix(){
 
@@ -233,7 +233,7 @@ function listerPrix(){
 
 }
 
-// FONCTION AFFICHER LE TOTAL EN DESSOUS DU TABLEAU
+// FONCTION AFFICHER LE TOTAL EN DESSOUS DU TABLEAU ( permet d'afficher 0.00 au lancement de la page)
 
 function afficherTotal(){
 
