@@ -1,7 +1,8 @@
 "use strict"
 
+// VARIABLE & CONSTANTE
 
-// prix 1kg de fruit dans des constantes
+    // prix 1kg de fruit dans des constantes
 
 
 const prix = {
@@ -20,7 +21,7 @@ const prix = {
 }
 
 
-// object réduction
+    // object réduction
 
 
 const reduction = {
@@ -33,20 +34,21 @@ const reduction = {
     },
 
     quantiteMin: {
-        mangue: 3,
-        abricot: 10,
-        banane: 6,
-        fraise: 2
+        mangue: 40,
+        abricot: 50,
+        banane: 80,
+        fraise: 60
     }
 
 }
 
-// création de la variable total
+
+    // création de la variable total
 
 let total = 0;
 
 
-// création d'un array qui va contenir les livraison
+    // création d'un array qui va contenir les livraison
 
 let arrayLivraison = [];
 
@@ -70,9 +72,9 @@ function envoyerFormulaire() {
 
     formulaire.prix = prix[formulaire.produit] * formulaire.quantité; // calcule du prix sans promotion
 
-    if (reduction.taux[fruit] && formulaire.quantité >= reduction.quantiteMin[fruit]) { // vérification si les promotion sont activé
-         
-        formulaire.prix *= reduction // calcule du prix avec promotion si la condition au dessus est vrai
+    if (reduction.taux[formulaire.produit] && formulaire.quantité > reduction.quantiteMin[formulaire.produit]) {
+
+        formulaire.prix *= reduction.taux[formulaire.produit];
 
     }
 
@@ -118,17 +120,23 @@ function envoyerFormulaire() {
 function supprimerCommande(element) {
 
     let rowIndex = element.parentNode.parentNode.rowIndex - 1;
+
     let strPrice = arrayLivraison[rowIndex].prix;
+
     total -= strPrice.slice(0, strPrice.length - 1);
+
     arrayLivraison.splice(rowIndex, 1);
+
     document.getElementById("corpsTableau").deleteRow(rowIndex);
+
     afficherTotal();
+
 }
 
 
 // AU LANCEMENT DE LA PAGE
 
-// affiche le tableau des prix 
+    // affiche le tableau des prix 
 
 function listerPrix() {
 
@@ -149,7 +157,8 @@ function listerPrix() {
 
 }
 
-// fonction afficher le total en dessous du tableau ( permet d'afficher 0.00 au lancement de la page)
+
+    // fonction afficher le total en dessous du tableau ( permet d'afficher 0.00 au lancement de la page)
 
 function afficherTotal() {
 
