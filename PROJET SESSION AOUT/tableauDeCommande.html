@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Projet seconde session</title>
+    <link href="CSS/styleSite.css" rel="stylesheet">
+</head>
+
+<body onload="listerPrix(),afficherTotal()">
+    <div>
+        <header>
+                <a href="https://github.com/WassimBouhdid/Exam-seconde-session-progammation" target="_blank">
+                <img id="imageGithub"src="IMG/logo-Github.png" alt="Lien vers la page Github du project"/>
+                </a>
+                <h1 id="titre">Project seconde session</h1>
+        </header>
+    </div>
+    <div>
+        <form onsubmit="envoyerFormulaire();return false" >
+            <h2>Formulaire</h2>
+            <div>
+                <label classe="nom">Nom :</label>
+                <input type="texte" id="nomInput" required>
+            </div>
+            <div>
+                <label classe="prénom">Prénom :</label>
+                <input type="texte" id="prénomInput" required>
+            </div>
+            <div>
+                <label classe="produit">Produit :</label>
+                <select name="choisissez le rpoduit" id="prodInput" required>
+                    <option value="" default disabled selected>choisissez un poduit</option>
+                    <option value="pomme">pomme</option>
+                    <option value="poire">poire</option>
+                    <option value="fraise">fraise</option>
+                    <option value="peche">pêche</option>
+                    <option value="abricot">abricot</option>
+                    <option value="banane">banane</option>
+                    <option value="raisin">raisin</option>
+                    <option value="ananas">ananas</option>
+                    <option value="mangue">mangue</option>
+                    <option value="orange">orange</option>
+                </select>
+            </div>
+            <div>
+                <label classe="quantité">Quantité :</label>
+                <input type="number" min="1"  name="choisissez une quantité" id="quantInput" required>
+                <span id="kilogrammes">kilogramme(s)</span>
+            </div>
+            <div>
+                <label classe="adresse">Adresse :</label>
+                <input type="texte" id="adresseInput" required>
+            </div>
+            <div>
+                <label classe="mail">Mail :</label>
+                <input type="texte" id="mailInput" required>
+            </div>
+            <div>
+                <label classe="message">Message supplémentaire :</label>
+                <textarea id="messageSuppInput"></textarea>
+            </div>
+            <div class="button">
+                <input type="submit" id="envoye" value="envoyer">
+                <input type="reset" id="reset" value="réinitialisation">
+            </div>
+        </form>
+    </div>
+    
+    <div>
+        <fieldset id="promo">
+            <legend id="titrePromo">PROMOTION !!!</legend>
+            <span>
+                • A l'achat de plus de 3 kilogramme de mangue vous recevez une réduction de 25% <br>
+                • A l'achat de plus de 10 kilogramme d'abricot vous recevez une réduction de 30% <br>
+                • A l'achat de plus de 6 kilogramme de banane vous recevez une réduction de 10% <br>
+                • A l'achat de plus de 2 kilogramme de fraise vous recevez une réduction de 15% 
+            </span>
+        </fieldset>
+    </div>
+    <div id="listePrix"></div>
+    <div id="tableauInfo">
+        <table id="tablePrincipale">
+            <thead id="têteTableau">
+                <th id="nomTableau">Nom</th>
+                <th id="PrenomTableau">Prénom</th>
+                <th id="produitTableau">Produit</th>
+                <th id="quantiteTableau">Quantité</th>
+                <th id="prixTableau">Prix</th>
+                <th id="adresseTableau">Adresse</th>
+                <th id="mailTableau">Mail</th>
+                <th id="infoTableau">information supplémentaire</th>
+                <th id="supprTableau">suppr</th>
+            </thead>
+            <tbody id="corpsTableau">
+            </tbody>
+        </table>
+        <div id="prixTotal">
+            prix total :
+            <span id="total"></span> €
+        </div>
+    </div>
+    <footer>
+    </footer>
+    <script src="JS/fonctionBouton.js"></script>
+</body>
+
+</html>
