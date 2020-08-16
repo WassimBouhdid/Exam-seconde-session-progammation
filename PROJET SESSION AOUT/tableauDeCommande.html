@@ -12,25 +12,28 @@
     <div>
         <header>
                 <a href="https://github.com/WassimBouhdid/Exam-seconde-session-progammation" target="_blank">
-                <img id="imageGithub"src="IMG/logo-Github.png" alt="Lien vers la page Github du project"/>
+                <img id="imageGithub"src="IMG/logo-Github.png" alt="Lien vers la page Github du project">
                 </a>
                 <h1 id="titre">Project seconde session</h1>
         </header>
     </div>
     <div>
         <form onsubmit="envoyerFormulaire();return false" >
-            <h2>Formulaire</h2>
             <div>
-                <label classe="nom">Nom :</label>
+                <h2>Formulaire</h2>
+            </div>
+            
+            <div>
+                <label classe="labelForm" id="nom">Nom :</label>
                 <input type="texte" id="nomInput" required>
             </div>
             <div>
-                <label classe="prénom">Prénom :</label>
+                <label classe="labelForm" id="prénom">Prénom :</label>
                 <input type="texte" id="prénomInput" required>
             </div>
             <div>
-                <label classe="produit">Produit :</label>
-                <select name="choisissez le rpoduit" id="prodInput" required>
+                <label classe="labelForm" id="produit">Produit :</label>
+                <select name="choixProd" id="prodInput" required>
                     <option value="" default disabled selected>choisissez un poduit</option>
                     <option value="pomme">pomme</option>
                     <option value="poire">poire</option>
@@ -45,29 +48,28 @@
                 </select>
             </div>
             <div>
-                <label classe="quantité">Quantité :</label>
+                <label classe="labelForm" id="quantité">Quantité :</label>
                 <input type="number" min="1"  name="choisissez une quantité" id="quantInput" required>
                 <span id="kilogrammes">kilogramme(s)</span>
             </div>
             <div>
-                <label classe="adresse">Adresse :</label>
+                <label classe="labelForm"  id="adresse">Adresse :</label>
                 <input type="texte" id="adresseInput" required>
             </div>
             <div>
-                <label classe="mail">Mail :</label>
+                <label classe="labelForm"  id="mail">Mail :</label>
                 <input type="texte" id="mailInput" required>
             </div>
             <div>
-                <label classe="message">Message supplémentaire :</label>
+                <label classe="labelForm"  id="messageSup">Message supplémentaire :</label>
                 <textarea id="messageSuppInput"></textarea>
             </div>
-            <div class="button">
+            <div>
                 <input type="submit" id="envoye" value="envoyer">
                 <input type="reset" id="reset" value="réinitialisation">
             </div>
         </form>
     </div>
-    
     <div>
         <fieldset id="promo">
             <legend id="titrePromo">PROMOTION !!!</legend>
@@ -79,7 +81,8 @@
             </span>
         </fieldset>
     </div>
-    <div id="listePrix"></div>
+    <div id="listePrix">
+    </div>
     <div id="tableauInfo">
         <table id="tablePrincipale">
             <thead id="têteTableau">

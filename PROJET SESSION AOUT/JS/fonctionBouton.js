@@ -119,15 +119,15 @@ function envoyerFormulaire() {
 
 function supprimerCommande(element) {
 
-    let rowIndex = element.parentNode.parentNode.rowIndex - 1;
+    let ligneTable = element.parentNode.parentNode.rowIndex - 1;
 
-    let strPrice = arrayLivraison[rowIndex].prix;
+    let strPrice = arrayLivraison[ligneTable].prix;
 
     total -= strPrice.slice(0, strPrice.length - 1);
 
-    arrayLivraison.splice(rowIndex, 1);
+    arrayLivraison.splice(ligneTable, 1);
 
-    document.getElementById("corpsTableau").deleteRow(rowIndex);
+    document.getElementById("corpsTableau").deleteRow(ligneTable);
 
     afficherTotal();
 
