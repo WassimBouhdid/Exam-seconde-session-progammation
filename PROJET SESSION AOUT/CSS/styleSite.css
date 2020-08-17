@@ -13,6 +13,7 @@ html{
 
   overflow: auto;
   background-image: url(../IMG/background.jfif);
+  text-align: center;
 
 }
 
@@ -27,8 +28,8 @@ h1#titre {
   text-align: center;
   font-size: 50px;
   font-weight: bolder;
-  display: block;
-  margin:10px
+  display: inline-block;
+  margin:10px;
 
 }
 
@@ -54,34 +55,38 @@ input,textarea {
 
 input {
 
-  height: 25px;
+  height: 20px;
   width: 250px;
 
 }
 
-label{
+form div .labelForm{
 
   font-weight: bolder;
   display:inline-block;
-  width: 230px;
-  text-align: left;
+  width: 225px;
   
 }
 
 
 form {
 
-  background-color: rgb(255, 241, 47);
   border-radius: 1em;
   width: 510px;
+  height: 510px;
   padding: 10px;
+  margin-top: 10px;
+  margin-left: 40px;
+  margin-bottom: 10px;
   float: left;
+  text-align: left;
+  border: 1px solid rgb(0, 0, 0);
 
 }
   
 form div + div {
 
-  margin-top: 1em;
+  margin-top: 0.5em;
 
 }
   
@@ -124,7 +129,8 @@ input,button{
 input#envoye,input#reset {
 
   width: 200px;
-  float: right;
+  margin-left: 30px;
+  margin-top: 5px;
 
 }
 
@@ -135,15 +141,20 @@ input#envoye,input#reset {
 #promo{
 
   display: inline-block;
-  background-color: rgb(255, 241, 47);
   width: 1200px;
   height: 150px;
   border: 1px solid rgb(0, 0, 0);
+  border-radius: 1em;
+  margin-left: 40px;
+
+}
+
+div#textPromo{
+
+  margin-left: 150px ;
   font-size: 20px;
   font-weight: normal;
-  border-radius: 1em;
-  text-align: center;
-  margin-left: 40px;
+  text-align: left ;
 
 }
 
@@ -152,6 +163,7 @@ input#envoye,input#reset {
 
   font-size: 30px ;
   font-weight: bolder ;
+  text-align: center ;
 
 }
 
@@ -159,6 +171,7 @@ input#envoye,input#reset {
 /* ==========================================================================
    #tableau
    ========================================================================== */
+
 
 table, th, td {
 
@@ -175,11 +188,6 @@ div#tableauInfo table {
 
 }
 
-th{
-
-  background-color: rgb(255, 241, 47);
-
-}
 
 td{
 
@@ -199,15 +207,20 @@ th#PrenomTableau{
   
 }
 
+th#numeroTvaTableau{
+
+  width: 6%;
+}
+
 th#adresseTableau{
 
-  width: 20%;
+  width: 17%;
 
 }
 
 th#mailTableau{
 
-  width: 20%;
+  width: 17%;
 
 }
 
@@ -246,7 +259,7 @@ th#supprTableau{
   width: 400px;
   float: right;
   text-align: center;
-  border: 1px solid black
+  border: 1px solid black;
 
 }
 
@@ -296,3 +309,20 @@ img#imageGithub{
    BACKGROUND COLOR
    ========================================================================== */
 
+form, #promo,th {
+
+  background-color: rgb(255, 241, 47);
+
+}
+
+/* ==========================================================================
+   MESSAGE ERREUR
+   ========================================================================== */
+
+   #messageErreur{
+
+    display: block;
+    font-size: 12px;
+    color: red;
+
+   }

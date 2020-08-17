@@ -2,7 +2,7 @@
 
 // VARIABLE & CONSTANTE
 
-    // prix 1kg de fruit dans des constantes
+// prix 1kg de fruit dans des constantes
 
 
 const prix = {
@@ -21,7 +21,7 @@ const prix = {
 }
 
 
-    // object réduction
+// object réduction
 
 
 const reduction = {
@@ -30,25 +30,27 @@ const reduction = {
         mangue: 0.75,
         abricot: 0.7,
         banane: 0.9,
-        fraise: 0.85
+        fraise: 0.85,
+        peche: 0.80
     },
 
     quantiteMin: {
         mangue: 40,
         abricot: 50,
         banane: 80,
-        fraise: 60
+        fraise: 60,
+        peche: 70
     }
 
 }
 
 
-    // création de la variable total
+// création de la variable total
 
 let total = 0;
 
 
-    // création d'un array qui va contenir les livraison
+// création d'un array qui va contenir les livraison
 
 let arrayLivraison = [];
 
@@ -61,6 +63,7 @@ function envoyerFormulaire() {
 
         nom: document.getElementById("nomInput").value,
         prénom: document.getElementById("prénomInput").value,
+        numéroDeTVA: document.getElementById("numTVAInput").value,
         produit: document.getElementById("prodInput").value,
         quantité: document.getElementById("quantInput").value,
         prix,
@@ -78,11 +81,19 @@ function envoyerFormulaire() {
 
     }
 
-    total += formulaire.prix; // ajout du prix au total
+    // ajout du prix au total
 
     document.getElementById("total").innerHTML = total.toFixed(2); // affichage du total 
 
-    if (formulaire.nom && formulaire.prénom && formulaire.produit && formulaire.quantité && formulaire.adresse && formulaire.mail) { // vérification que tout les champs sont bien remplis
+    if (!(Number(formulaire.numéroDeTVA) && formulaire.numéroDeTVA.length == 10)) {
+
+        document.getElementById("erreurNumTVA").innerHTML = "<span id=" + "messageErreur" + ">Veuillez rentrer un numéro de TVA valide !!</span>";
+
+    } 
+    
+    if (formulaire.nom.trim() && formulaire.prénom.trim() && formulaire.numéroDeTVA.trim() && formulaire.produit.trim() && formulaire.quantité.trim() && formulaire.adresse.trim() && formulaire.mail.trim()) { // vérification que tout les champs sont bien remplis
+
+        total += formulaire.prix;
 
         formulaire.prix = formulaire.prix.toFixed(2) + " €";
 
@@ -101,16 +112,24 @@ function envoyerFormulaire() {
             }
 
             tr += "<td><button id=" + arrayLivraison + " type=" + "button" + " onclick=" + "supprimerCommande(this)" + ">supprimer</button></td></tr>"; // ajout du boutton qui nous permmetra de supprimer des lignes de commande
-            
+
             ligne += tr;
 
         }
 
         document.getElementById("corpsTableau").innerHTML = ligne; // insertion du tableau dans l'HTML
 
-    } else
+        document.getElementById("erreurNumTVA").innerHTML = ""
 
-        alert("veuillez complétez tout les champs !!"); // message d'erreur au cas ou l'un des champs du formulaire est vide
+        afficherTotal();
+
+    }
+    else{
+
+        document.getElementById("erreurChampVide").innerHTML = "<span id=" + "messageErreur" + ">Veuillez remplir tout les champs !!</span>";
+
+    }
+
 
 }
 
@@ -136,7 +155,7 @@ function supprimerCommande(element) {
 
 // AU LANCEMENT DE LA PAGE
 
-    // affiche le tableau des prix 
+// affiche le tableau des prix 
 
 function listerPrix() {
 
@@ -158,7 +177,7 @@ function listerPrix() {
 }
 
 
-    // fonction afficher le total en dessous du tableau ( permet d'afficher 0.00 au lancement de la page)
+// fonction afficher le total en dessous du tableau ( permet d'afficher 0.00 au lancement de la page)
 
 function afficherTotal() {
 
