@@ -1,6 +1,8 @@
 "use strict"
 
-// VARIABLE & CONSTANTE
+
+//==================VARIABLE & CONSTANTE============================================================================================================================
+   
 
 // prix 1kg de fruit dans des constantes
 
@@ -45,21 +47,28 @@ const reduction = {
 }
 
 
-// création de la variable total
-
-let total = 0;
+let total = 0; // création de la variable total qui contiendra la somme des prix 
 
 
-// création d'un array qui va contenir les livraison
-
-let arrayLivraison = [];
+let arrayLivraison = []; // création d'un array qui va contenir les livraisons
 
 
-// cette fonction me permet de récuperer la value de chaqu'un des champs et de les insérer dans un array
+//==================FONCTION LANCER PAR DES EVENEMENTS ONCLICK============================================================================================================================
+
+
+/**
+ * 
+ * cette fonction me permet de récuperer la value de chaqu'un des champs et de les insérer dans un array.
+ * 
+ * pas de paramètres
+ * 
+ */
+
 
 function envoyerFormulaire() {
 
-    let formulaire = { //l'object dans le quelle on va stocker les valeur du formulaire envoyé
+    
+    let formulaire = {  //l'object dans le quelle on va stocker les valeur du formulaire envoyé
 
         nom: document.getElementById("nomInput").value,
         prénom: document.getElementById("prénomInput").value,
@@ -73,7 +82,7 @@ function envoyerFormulaire() {
 
     }
 
-    formulaire.prix = prix[formulaire.produit] * formulaire.quantité; // calcule du prix sans promotion
+    formulaire.prix = prix[formulaire.produit] * formulaire.quantité;  // calcule du prix sans promotion
 
     if (reduction.taux[formulaire.produit] && formulaire.quantité > reduction.quantiteMin[formulaire.produit]) {
 
@@ -81,33 +90,39 @@ function envoyerFormulaire() {
 
     }
 
-    // ajout du prix au total
+    document.getElementById("total").innerHTML = total.toFixed(2);     // affichage du total 
 
-    document.getElementById("total").innerHTML = total.toFixed(2); // affichage du total 
+    if (isNaN(formulaire.numéroDeTVA) || formulaire.numéroDeTVA.length != 10) {
 
-    if (!(Number(formulaire.numéroDeTVA) && formulaire.numéroDeTVA.length == 10)) {
+        document.getElementById("erreurNumTVA").innerHTML = "<span id=" + "messageErreur" + ">Veuillez rentrer un numéro de TVA valide !!</span><br>";
 
-        document.getElementById("erreurNumTVA").innerHTML = "<span id=" + "messageErreur" + ">Veuillez rentrer un numéro de TVA valide !!</span>";
-
-    } 
+    }
+    else{
+        document.getElementById("erreurNumTVA").innerHTML = "";
+    }
     
-    if (formulaire.nom.trim() && formulaire.prénom.trim() && formulaire.numéroDeTVA.trim() && formulaire.produit.trim() && formulaire.quantité.trim() && formulaire.adresse.trim() && formulaire.mail.trim()) { // vérification que tout les champs sont bien remplis
+    if (!(formulaire.nom.trim() && formulaire.prénom.trim() && formulaire.numéroDeTVA.trim() && formulaire.produit.trim() && formulaire.quantité.trim() && formulaire.adresse.trim() && formulaire.mail.trim())) { // vérification que tout les champs sont bien remplis
+
+       document.getElementById("erreurChampVide").innerHTML = "<span id=" + "messageErreur" + ">Veuillez remplir tout les champs !!</span>";
+
+    }
+    else if(!(isNaN(formulaire.numéroDeTVA) || formulaire.numéroDeTVA.length != 10)){
 
         total += formulaire.prix;
 
         formulaire.prix = formulaire.prix.toFixed(2) + " €";
 
-        arrayLivraison.push(formulaire); // insertion de l'object créé via le formulaire dans l'array pour permettre plus tard a une autre fonction et a un boutton de pouvoir supprimer des livraisons
+        arrayLivraison.push(formulaire);   // insertion de l'object créé via le formulaire dans l'array pour permettre plus tard a une autre fonction et a un boutton de pouvoir supprimer des livraisons
 
         let ligne = "";
 
         for (let i = 0; i < arrayLivraison.length; i++) {
 
-            var tr = "<tr id=" + i + ">"; // création de la ligne du tableau qui contiendront toute les informations de la commande
+            var tr = "<tr id=" + i + ">";    // création de la ligne du tableau qui contiendront toute les informations de la commande
 
             for (let f in arrayLivraison[i]) {
 
-                tr += "<td>" + arrayLivraison[i][f] + "</td>"; // création de chaqu'une des cellules qui contiendront chaqu'une une information a propos de la commande ayant id de la ligne
+                tr += "<td>" + arrayLivraison[i][f] + "</td>";   // création de chaqu'une des cellules qui contiendront chaqu'une une information a propos de la commande ayant id de la ligne
 
             }
 
@@ -119,22 +134,23 @@ function envoyerFormulaire() {
 
         document.getElementById("corpsTableau").innerHTML = ligne; // insertion du tableau dans l'HTML
 
-        document.getElementById("erreurNumTVA").innerHTML = ""
+        document.getElementById("erreurChampVide").innerHTML = "";
 
         afficherTotal();
 
     }
-    else{
-
-        document.getElementById("erreurChampVide").innerHTML = "<span id=" + "messageErreur" + ">Veuillez remplir tout les champs !!</span>";
-
-    }
-
 
 }
 
 
-// FONCTION SUPPRIMER UNE LIGNE DE COMMANDE
+//fonction supprimer une ligne de commande
+
+/**
+ * Fonction qui permet de supprimer une lignedu tableau des commandes et de soustraire du prix total le prix de la commande supprimé
+ * 
+ * @param {String} element Balise boutton sur lequel on a cliqué dans le tableau des commandes
+ * 
+ */
 
 function supprimerCommande(element) {
 
@@ -153,9 +169,18 @@ function supprimerCommande(element) {
 }
 
 
-// AU LANCEMENT DE LA PAGE
+//==================FONCTIONAU LANCEMENT DE LA PAGE============================================================================================================================
+
 
 // affiche le tableau des prix 
+
+/**
+ * 
+ * permet de creer un tableau qui contiendra les fruits et leur prix respactif
+ * 
+ * pas de paramètres
+ * 
+ */
 
 function listerPrix() {
 
@@ -178,6 +203,14 @@ function listerPrix() {
 
 
 // fonction afficher le total en dessous du tableau ( permet d'afficher 0.00 au lancement de la page)
+
+/**
+ * 
+ * cette fonction permet d'afficher le total en dessous du tableau
+ * 
+ * pas de paramètres
+ * 
+ */
 
 function afficherTotal() {
 

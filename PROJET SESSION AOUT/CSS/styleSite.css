@@ -37,7 +37,8 @@ h1#titre {
 h2{
 
   text-align: center;
-  margin:5px
+  margin:5px;
+  text-decoration : underline;
 
 }
 
@@ -73,7 +74,6 @@ form {
 
   border-radius: 1em;
   width: 510px;
-  height: 510px;
   padding: 10px;
   margin-top: 10px;
   margin-left: 40px;
@@ -86,7 +86,7 @@ form {
   
 form div + div {
 
-  margin-top: 0.5em;
+  margin-top: 0.35em;
 
 }
   
@@ -126,11 +126,10 @@ input,button{
 
 }
 
-input#envoye,input#reset {
+.buttonForm{
 
-  width: 200px;
-  margin-left: 30px;
-  margin-top: 5px;
+  width: 175px;
+  float:right;
 
 }
 
@@ -256,10 +255,11 @@ th#supprTableau{
 
   font-size: normal ;
   font-weight: bolder;
-  width: 400px;
+  width: 394px;
   float: right;
   text-align: center;
   border: 1px solid black;
+  margin-right: 10px;
 
 }
 
@@ -321,8 +321,10 @@ form, #promo,th {
 
    #messageErreur{
 
-    display: block;
+    float: left;
     font-size: 12px;
     color: red;
+    font-weight: bolder;
+    margin-top: 2px;
 
    }

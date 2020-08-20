@@ -20,7 +20,7 @@
     <div>
         <form onsubmit="envoyerFormulaire();return false" >
             <div>
-                <h2>Formulaire</h2>
+                <h2>Faites votre commande !!</h2>
             </div>
             <div>
                 <label class="labelForm" id="nom">Nom :</label>
@@ -73,8 +73,8 @@
                 <textarea id="messageSuppInput"></textarea>
             </div>
             <div>
-                <input type="reset" id="reset" value="réinitialisation">
-                <input type="submit" id="envoye" value="envoyer">
+                <button type="submit" id="envoye" class="buttonForm" value="envoyer">envoyer</button>
+                <button type="reset" id="reset" class="buttonForm" value="réinitialisation">reset</button>
             </div>
             <div>
                 <div id="erreurChampVide">
@@ -111,7 +111,7 @@
                 <th class="titreTable" id="adresseTableau">Adresse</th>
                 <th class="titreTable" id="mailTableau">Mail</th>
                 <th class="titreTable" id="infoTableau">information supplémentaire</th>
-                <th class="titreTable" id="supprTableau">suppr</th>
+                <th class="titreTable" id="supprTableau">supprimer</th>
             </thead>
             <tbody id="corpsTableau">
             </tbody>
