@@ -2,7 +2,7 @@
 
 
 //==================VARIABLE & CONSTANTE============================================================================================================================
-   
+
 
 // prix 1kg de fruit dans des constantes
 
@@ -67,8 +67,8 @@ let arrayLivraison = []; // création d'un array qui va contenir les livraisons
 
 function envoyerFormulaire() {
 
-    
-    let formulaire = {  //l'object dans le quelle on va stocker les valeur du formulaire envoyé
+
+    let formulaire = { //l'object dans le quelle on va stocker les valeur du formulaire envoyé
 
         nom: document.getElementById("nomInput").value,
         prénom: document.getElementById("prénomInput").value,
@@ -82,7 +82,7 @@ function envoyerFormulaire() {
 
     }
 
-    formulaire.prix = prix[formulaire.produit] * formulaire.quantité;  // calcule du prix sans promotion
+    formulaire.prix = prix[formulaire.produit] * formulaire.quantité; // calcule du prix sans promotion
 
     if (reduction.taux[formulaire.produit] && formulaire.quantité > reduction.quantiteMin[formulaire.produit]) {
 
@@ -90,39 +90,55 @@ function envoyerFormulaire() {
 
     }
 
-    document.getElementById("total").innerHTML = total.toFixed(2);     // affichage du total 
+    if (vérifierNumTVA(formulaire.numéroDeTVA)) {
 
-    if (isNaN(formulaire.numéroDeTVA) || formulaire.numéroDeTVA.length != 10) {
+        document.getElementById("erreurNumTVA").innerText = "";
+    } else {
 
-        document.getElementById("erreurNumTVA").innerHTML = "<span id=" + "messageErreur" + ">Veuillez rentrer un numéro de TVA valide !!</span><br>";
-
-    }
-    else{
-        document.getElementById("erreurNumTVA").innerHTML = "";
-    }
-    
-    if (!(formulaire.nom.trim() && formulaire.prénom.trim() && formulaire.numéroDeTVA.trim() && formulaire.produit.trim() && formulaire.quantité.trim() && formulaire.adresse.trim() && formulaire.mail.trim())) { // vérification que tout les champs sont bien remplis
-
-       document.getElementById("erreurChampVide").innerHTML = "<span id=" + "messageErreur" + ">Veuillez remplir tout les champs !!</span>";
+        document.getElementById("erreurNumTVA").innerText = "Veuillez rentrer un numéro de TVA valide (nombre de 10 chiffres) !!";
 
     }
-    else if(!(isNaN(formulaire.numéroDeTVA) || formulaire.numéroDeTVA.length != 10)){
+
+    if (contientChiffres(formulaire.nom)) {
+
+        document.getElementById("erreurNom").innerText = "Ce champs peut-être complété qu'avec des lettres !!";
+    } else {
+
+        document.getElementById("erreurNom").innerText = "";
+
+    }
+
+    if (contientChiffres(formulaire.prénom)) {
+
+        document.getElementById("erreurPrenom").innerText = "Ce champs peut-être complété qu'avec des lettres !!";
+
+    } else {
+
+        document.getElementById("erreurPrenom").innerText = "";
+
+    }
+
+    if (!vérifierNumTVA(formulaire.numéroDeTVA)) {
+
+        console.log("Whallah je gère la fougère !!!");
+
+    } else if (vérifierChamps(formulaire)) { // vérification que tout les champs sont bien remplis
 
         total += formulaire.prix;
 
         formulaire.prix = formulaire.prix.toFixed(2) + " €";
 
-        arrayLivraison.push(formulaire);   // insertion de l'object créé via le formulaire dans l'array pour permettre plus tard a une autre fonction et a un boutton de pouvoir supprimer des livraisons
+        arrayLivraison.push(formulaire); // insertion de l'object créé via le formulaire dans l'array pour permettre plus tard a une autre fonction et a un boutton de pouvoir supprimer des livraisons
 
         let ligne = "";
 
         for (let i = 0; i < arrayLivraison.length; i++) {
 
-            var tr = "<tr id=" + i + ">";    // création de la ligne du tableau qui contiendront toute les informations de la commande
+            var tr = "<tr id=" + i + ">"; // création de la ligne du tableau qui contiendront toute les informations de la commande
 
             for (let f in arrayLivraison[i]) {
 
-                tr += "<td>" + arrayLivraison[i][f] + "</td>";   // création de chaqu'une des cellules qui contiendront chaqu'une une information a propos de la commande ayant id de la ligne
+                tr += "<td>" + arrayLivraison[i][f] + "</td>"; // création de chaqu'une des cellules qui contiendront chaqu'une une information a propos de la commande ayant id de la ligne
 
             }
 
@@ -138,7 +154,13 @@ function envoyerFormulaire() {
 
         afficherTotal();
 
+    } else {
+
+        document.getElementById("erreurChampVide").innerText = "Veuillez remplir tout les champs correctement !!";
+
     }
+
+    console.log(arrayLivraison);
 
 }
 
@@ -184,7 +206,7 @@ function supprimerCommande(element) {
 
 function listerPrix() {
 
-    let tableau = "<table id=" + "'tableauPrix'" + "><thead><th id=" + "'fruit'" + ">Fruit</th><th id=" + prix + ">Prix</th></thead><tbody id=" + "'corpsTableauPrix'" + ">";
+    let tableau = "<table id=" + "'tableauPrix'" + "><thead><th id=" + "fruit" + ">Fruit</th><th id=" + prix + ">Prix</th></thead><tbody id=" + "'corpsTableauPrix'" + ">";
 
     let indice = Object.keys(prix);
 
@@ -216,4 +238,57 @@ function afficherTotal() {
 
     document.getElementById("total").innerHTML = total.toFixed(2); // permet d'afficher 0.00 au lancement de la page au niveau du prix total en dessous du tableau
 
+}
+
+/**
+ * 
+ * @param {Number} numTVA 
+ */
+
+function vérifierNumTVA(numTVA) {
+
+    if (!isNaN(numTVA) && numTVA.length == 10) {
+
+        return true;
+
+    } else {
+
+        return false;
+
+    }
+
+
+
+}
+
+/**
+ * 
+ * @param {object} formulaire 
+ */
+
+function vérifierChamps(formulaire) {
+
+    if (formulaire.nom.trim() && formulaire.prénom.trim() && formulaire.numéroDeTVA.trim() && formulaire.produit.trim() && formulaire.quantité.trim() && formulaire.adresse.trim() && formulaire.mail.trim()) {
+
+        return true;
+
+    } else {
+
+        return false;
+
+    }
+
+}
+
+function contientChiffres(string) {
+
+    for (let i = 0; i < string.length; i++) {
+
+        if (!isNaN(string[i])) {
+
+            return true;
+
+        }
+
+    }
 }

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <title>Projet seconde session</title>
@@ -11,38 +12,39 @@
 <body onload="listerPrix(),afficherTotal()">
     <div>
         <header>
-                <a href="https://github.com/WassimBouhdid/Exam-seconde-session-progammation" target="_blank">
-                <img id="imageGithub"src="IMG/logo-Github.png" alt="Lien vers la page Github du project">
-                </a>
-                <h1 id="titre">Project seconde session</h1>
+            <a href="https://github.com/WassimBouhdid/Exam-seconde-session-progammation" target="_blank">
+                <img id="imageGithub" src="IMG/logo-Github.png" alt="Lien vers la page Github du project">
+            </a>
+            <h1 id="titre">Project seconde session</h1>
         </header>
     </div>
     <div>
-        <form onsubmit="envoyerFormulaire();return false" >
+        <form onsubmit="envoyerFormulaire();return false">
             <div>
                 <h2>Faites votre commande !!</h2>
             </div>
             <div>
-                <label class="labelForm" id="nom">Nom :</label>
+                <label class="labelForm" id="nom" for="nomInput">Nom :</label>
                 <input type="texte" id="nomInput">
             </div>
+            <div class="messageErreur" id="erreurNom">
+            </div>
             <div>
-                <label class="labelForm" id="prénom">Prénom :</label>
+                <label class="labelForm" id="prénom" for="prénomInput">Prénom :</label>
                 <input type="texte" id="prénomInput">
             </div>
+            <div class="messageErreur" id="erreurPrenom">
+            </div>
             <div>
-                <label class="labelForm" id="numTVA">Numéro de TVA :</label>
+                <label class="labelForm" id="numTVA" for="numTVAInput">Numéro de TVA :</label>
                 <input type="text" id="numTVAInput">
             </div>
-            <div>
-                <div id="erreurNumTVA">
+            <div class="messageErreur" id="erreurNumTVA">
             </div>
-        </div>
-            
             <div>
-                <label class="labelForm" id="produit">Produit :</label>
+                <label class="labelForm" id="produit" for="prodInput">Produit :</label>
                 <select name="choixProd" id="prodInput">
-                    <option value="" default disabled selected>choisissez un poduit</option>
+                    <option value="" default disabled selected>choisissez un produit</option>
                     <option value="pomme">pomme</option>
                     <option value="poire">poire</option>
                     <option value="fraise">fraise</option>
@@ -56,45 +58,43 @@
                 </select>
             </div>
             <div>
-                <label class="labelForm" id="quantité">Quantité :</label>
-                <input type="number" min="1"  name="choisissez une quantité" id="quantInput">
-                <span id="kilogrammes">kilogramme(s)</span>
+                <label class="labelForm" id="quantité" for="quantInput">Quantité (kilogramme(s)):</label>
+                <input type="number" min="1" name="choisissez une quantité" id="quantInput">
+
             </div>
             <div>
-                <label class="labelForm"  id="adresse">Adresse :</label>
+                <label class="labelForm" id="adresse" for="adresseInput">Adresse :</label>
                 <input type="texte" id="adresseInput">
+
             </div>
             <div>
-                <label class="labelForm"  id="mail">Mail :</label>
+                <label class="labelForm" id="mail" for="mailInput">Mail :</label>
                 <input type="email" id="mailInput">
             </div>
             <div>
-                <label class="labelForm"  id="messageSup">Message supplémentaire :</label>
+                <label class="labelForm" id="messageSup" for="messageSuppInput">Message supplémentaire :</label>
                 <textarea id="messageSuppInput"></textarea>
             </div>
             <div>
                 <button type="submit" id="envoye" class="buttonForm" value="envoyer">envoyer</button>
                 <button type="reset" id="reset" class="buttonForm" value="réinitialisation">reset</button>
             </div>
-            <div>
-                <div id="erreurChampVide">
+            <div class="messageErreur" id="erreurChampVide">
             </div>
-        </div>
-            
         </form>
     </div>
     <div>
         <fieldset id="promo">
             <legend id="titrePromo">PROMOTION !!!</legend>
             <div id=textPromo>
-            <span>
-                • A l'achat de plus de 40 kilogramme de mangue vous recevez une réduction de 25% <br>
-                • A l'achat de plus de 50 kilogramme d'abricot vous recevez une réduction de 30% <br>
-                • A l'achat de plus de 80 kilogramme de banane vous recevez une réduction de 10% <br>
-                • A l'achat de plus de 60 kilogramme de fraise vous recevez une réduction de 15% <br>
-                • A l'achat de plus de 70 kilogramme de pêche vous recevez une réduction de 20%
-            </span>
-        </div>
+                <span>
+                    • A l'achat de plus de 40 kilogramme de mangue vous recevez une réduction de 25% <br>
+                    • A l'achat de plus de 50 kilogramme d'abricot vous recevez une réduction de 30% <br>
+                    • A l'achat de plus de 80 kilogramme de banane vous recevez une réduction de 10% <br>
+                    • A l'achat de plus de 60 kilogramme de fraise vous recevez une réduction de 15% <br>
+                    • A l'achat de plus de 70 kilogramme de pêche vous recevez une réduction de 20%
+                </span>
+            </div>
         </fieldset>
     </div>
     <div id="listePrix">
@@ -117,7 +117,7 @@
             </tbody>
         </table>
         <div id="prixTotal">
-            <span>prix total :</span><span id="total"></span><span>€</span> 
+            <span>prix total :</span><span id="total"></span><span>€</span>
         </div>
     </div>
     <footer>

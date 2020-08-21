@@ -5,11 +5,11 @@
 
 * {
 
-  font-family: Arial, Helvetica, sans-serif;  
+  font-family: Arial, Helvetica, sans-serif;
 
 }
 
-html{
+html {
 
   overflow: auto;
   background-image: url(../IMG/background.jfif);
@@ -29,16 +29,17 @@ h1#titre {
   font-size: 50px;
   font-weight: bolder;
   display: inline-block;
-  margin:10px;
+  margin: 10px;
+  text-decoration: underline;
 
 }
 
 
-h2{
+h2 {
 
   text-align: center;
-  margin:5px;
-  text-decoration : underline;
+  margin: 5px;
+  text-decoration: underline;
 
 }
 
@@ -48,25 +49,22 @@ h2{
    ========================================================================== */
 
 
-input,textarea {
+input,
+textarea,
+select {
 
   font-size: 15px;
 
 }
 
-input {
 
-  height: 20px;
-  width: 250px;
-
-}
-
-form div .labelForm{
+form div .labelForm {
 
   font-weight: bolder;
-  display:inline-block;
-  width: 225px;
-  
+  font-size: 16px;
+  display: inline-block;
+  width: 210px;
+
 }
 
 
@@ -75,7 +73,7 @@ form {
   border-radius: 1em;
   width: 510px;
   padding: 10px;
-  margin-top: 10px;
+  margin-top: 20px;
   margin-left: 40px;
   margin-bottom: 10px;
   float: left;
@@ -83,86 +81,77 @@ form {
   border: 1px solid rgb(0, 0, 0);
 
 }
-  
-form div + div {
 
-  margin-top: 0.35em;
+form div+div {
+
+  margin-top: 1em;
 
 }
-  
+
 textarea {
 
   vertical-align: top;
   height: 150px;
-  width: 250px;
+  width: 289px;
   overflow: auto;
-  background-color: rgb(255, 255, 255);
-
-}
-  
-
-select{
-
-  width: 150px;
 
 }
 
 
-span#kilogrammes{
-
-  font-size: normal;
-
-}
-
-
-input#quantInput{
-  width: 150px;
-}
-
-
-input,button{
-
-  cursor: pointer;
-
-}
-
-.buttonForm{
+.buttonForm {
 
   width: 175px;
-  float:right;
+  float: right;
 
 }
+
+input {
+
+  float: right;
+  width: 275px;
+
+}
+
+select#prodInput,
+input#quantInput {
+
+  float: right;
+  width: 200px;
+
+}
+
+
+
 
 /* ==========================================================================
    #ZONEPROMO
    ========================================================================== */
-  
-#promo{
 
-  display: inline-block;
-  width: 1200px;
-  height: 150px;
+#promo {
+
+  float:right;
+  width: 55%;
   border: 1px solid rgb(0, 0, 0);
   border-radius: 1em;
-  margin-left: 40px;
+  margin: 0px 125px 0px 0px;
 
 }
 
-div#textPromo{
+div#textPromo {
 
-  margin-left: 150px ;
+  margin-left: 100px;
   font-size: 20px;
   font-weight: normal;
-  text-align: left ;
+  text-align: left;
 
 }
 
 
-#titrePromo{ 
+#titrePromo {
 
-  font-size: 30px ;
-  font-weight: bolder ;
-  text-align: center ;
+  font-size: 30px;
+  font-weight: bolder;
+  text-align: center;
 
 }
 
@@ -172,9 +161,11 @@ div#textPromo{
    ========================================================================== */
 
 
-table, th, td {
+table,
+th,
+td {
 
-  border:1px solid black;
+  border: 1px solid black;
   text-align: center;
   border-collapse: collapse;
 
@@ -188,72 +179,72 @@ div#tableauInfo table {
 }
 
 
-td{
+td {
 
   height: 20px;
 
 }
 
-th#nomTableau{
+th#nomTableau {
 
- width: 7%;
+  width: 5%;
 
 }
 
-th#PrenomTableau{
+th#PrenomTableau {
 
-  width: 7%;
-  
+  width: 5%;
+
 }
 
-th#numeroTvaTableau{
+th#numeroTvaTableau {
 
   width: 6%;
 }
 
-th#adresseTableau{
+th#adresseTableau {
 
-  width: 17%;
-
-}
-
-th#mailTableau{
-
-  width: 17%;
+  width: 20%;
 
 }
 
-th#produitTableau{
+th#mailTableau {
 
-  width:10% ;
-
-}
-
-th#quantiteTableau{
-
-  width: 10%;
+  width: 20%;
 
 }
 
-th#prixTableau{
+th#produitTableau {
 
-  width:5% ;
-
-}
-
-th#infoTableau{
-
-  width:16%;
+  width: 5%;
 
 }
 
-th#supprTableau{
+th#quantiteTableau {
+
+  width: 5%;
+
+}
+
+th#prixTableau {
+
+  width: 5%;
+
+}
+
+th#infoTableau {
+
+  width: 24%;
+
+}
+
+th#supprTableau {
   width: 5%;
 }
 
 #prixTotal {
 
-  font-size: normal ;
+  font-size: normal;
   font-weight: bolder;
   width: 394px;
   float: right;
@@ -263,17 +254,17 @@ th#supprTableau{
 
 }
 
-#total{
+td {
 
-  font-size: normal ;
-  font-weight: bolder;
-  color: red;
+  background-color: white;
 
 }
 
-td{
+#total {
 
-  background-color:white;
+  font-size: normal;
+  font-weight: bolder;
+  color: red;
 
 }
 
@@ -281,14 +272,12 @@ td{
    #tableau DES PRIX
    ========================================================================== */
 
-table#tableauPrix{
+table#tableauPrix {
 
-  width: 1000px;
+  width: 55%;
   height: 380px;
-  float: right;
-  margin-top: 10px;
-  margin-right: 150px;
-  margin-bottom: 10px;
+  margin: 10px 0px 20px 145px;
+  float:left;
 
 }
 
@@ -296,7 +285,7 @@ table#tableauPrix{
    IMAGE
    ========================================================================== */
 
-img#imageGithub{
+img#imageGithub {
 
   width: 70px;
   height: 70px;
@@ -309,7 +298,9 @@ img#imageGithub{
    BACKGROUND COLOR
    ========================================================================== */
 
-form, #promo,th {
+form,
+#promo,
+th {
 
   background-color: rgb(255, 241, 47);
 
@@ -319,12 +310,14 @@ form, #promo,th {
    MESSAGE ERREUR
    ========================================================================== */
 
-   #messageErreur{
+div.messageErreur {
 
-    float: left;
-    font-size: 12px;
-    color: red;
-    font-weight: bolder;
-    margin-top: 2px;
+  float: left;
+  font-size: 15px;
+  color: red;
+  font-weight: bolder;
+  margin-top: 2px;
+  margin-left: 20px;
+  margin-bottom: 2px;
 
-   }
+}
