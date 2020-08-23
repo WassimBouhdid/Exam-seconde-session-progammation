@@ -8,8 +8,9 @@ Mon projet est un site qui permet a son utilisateur de remplir un formulaire ave
 
 ## Fonctionnalités principales
 
-- Un fomulaire qui permet l'encodage d'une commande de fruit.
-- un bouton "envoyer" qui permet d'afficher les informations encoder dans le formulaire dans un tableau.
-- un bouton "supprimer" qui permet de supprimer une ligne de commande dansle tableau de commande.
-- Des promotions sont présente et sont écrites sur le sites. si les conditions ,la promotions est appliqué sur la commande d'envoyé.
-- une zone en dessous du tableau des commandes affiche le prix total de toute les commandes se trouvant dans le tableau ci-dessus
+- Un fomulaire qui permet la création d'une commande de fruit.
+- un bouton "envoyer" qui permet d'afficher les informations inscritent dans le formulaire dans un tableau.
+- un bouton "supprimer" qui permet de supprimer une ligne de commande dans le tableau de commande.
+- Des promotions sont présente et sont écritent sur le site. si les conditions sont respectés ,la promotions est appliqué sur la commande d'envoyée.
+- une zone en dessous du tableau des commandes affiche le prix total de toute les commandes se trouvant dans le tableau ci-dessus.
+- si l'une des informations inscritent dans le formulaire  n'est pas correcte alors des messages d'erreurs s'affichent et demande a l'utilisateur de réinscrire des informations     correcte
