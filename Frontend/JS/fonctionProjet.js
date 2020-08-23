@@ -1,22 +1,23 @@
 "use strict"
 
 
-//==================VARIABLE & CONSTANTE============================================================================================================================
+document.addEventListener("reset", resetErreur);
+
+//================================VARIABLE & CONSTANTE============================================================================================================================
 
 
-// prix 1kg de fruit dans des constantes
-
+// prix 1kg de fruit 
 
 const prix = {
 
     banane: 2.00,
     mangue: 4.98,
-    ananas: 2.20,
+    kiwi: 2.99,
     poire: 2.49,
     pomme: 2.89,
     raisin: 3.99,
     fraise: 6.99,
-    peche: 3.99,
+    pêche: 3.99,
     abricot: 5.95,
     orange: 1.95
 
@@ -33,7 +34,7 @@ const reduction = {
         abricot: 0.7,
         banane: 0.9,
         fraise: 0.85,
-        peche: 0.80
+        pêche: 0.80
     },
 
     quantiteMin: {
@@ -41,37 +42,28 @@ const reduction = {
         abricot: 50,
         banane: 80,
         fraise: 60,
-        peche: 70
+        pêche: 70
     }
 
 }
 
 
-let total = 0; // création de la variable total qui contiendra la somme des prix 
+let total = 0; // création de la variable total qui contiendra la somme des prix de toutes les commandes
 
 
-let arrayLivraison = []; // création d'un array qui va contenir les livraisons
+let arrayLivraison = []; // création d'un array qui va contenir toutes les livraisons
 
 
-//==================FONCTION LANCER PAR DES EVENEMENTS ONCLICK============================================================================================================================
-
+//==================FONCTION LANCER PAR DES EVENEMENTS ONCLICK ou ONSUBMIT============================================================================================================================
 
 /**
- * 
- * cette fonction me permet de récuperer la value de chaqu'un des champs du formulaire et de les inserer dans un object.après ça,
- * on calcule le prix de la commande et on verifie si il y a une promotion qui doit être appliqué. On vérifie aussi si le numéro de TVA est valide
- * et si le nom et le prénom inscrit ne contient aucun numéro. Si toute les données inscritent sont correcte alors on calcule le prix total de toute les lvraisons faites
- * et on insère la livraison dans un array nommé arrayLivraison. Ensuite, on crée le tableau qui va montrée toute les livraisons inscritent.
- * 
+ * permet de récuperer les valeurs des champs du formulaire et de les inserer dans un tableau.
  * pas de paramètres
- * 
  */
 
+function envoyerFormulaire() { // évenement onSubmit
 
-function envoyerFormulaire() {
-
-
-    let formulaire = { //l'object dans le quelle on va stocker les valeur du formulaire envoyé
+    let formulaire = { //l'object dans le quelle on va stocker les valeurs du formulaire envoyé
 
         nom: document.getElementById("nomInput").value,
         prénom: document.getElementById("prénomInput").value,
@@ -87,47 +79,51 @@ function envoyerFormulaire() {
 
     formulaire.prix = prix[formulaire.produit] * formulaire.quantité; // calcule du prix sans promotion
 
-    if (reduction.taux[formulaire.produit] && formulaire.quantité > reduction.quantiteMin[formulaire.produit]) {
+    if (reduction.taux[formulaire.produit] && formulaire.quantité > reduction.quantiteMin[formulaire.produit]) { // calcul du prix avec promotion
 
         formulaire.prix *= reduction.taux[formulaire.produit];
 
     }
 
     if (vérifierNumTVA(formulaire.numéroDeTVA)) {
-        
-       document.getElementById("erreurNumTVA").innerText = "";
-        
-    } 
+
+        document.getElementById("erreurNumTVA").innerText = "";
+        document.getElementById("numTVAInput").style.borderColor =""
+
+    }
     else {
-    
+
         document.getElementById("erreurNumTVA").innerText = "Veuillez rentrer un numéro de TVA valide (nombre de 10 chiffres) !!";
-        
+        document.getElementById("numTVAInput").style.borderColor ="red"
+
     }
 
     if (contientChiffres(formulaire.nom)) {
-        
+
         document.getElementById("erreurNom").innerText = "";
-        
-    } 
-    else {
+        document.getElementById("nomInput").style.borderColor =""
+
+    } else {
 
         document.getElementById("erreurNom").innerText = "Ce champs peut-être complété qu'avec des lettres !!";
+        document.getElementById("nomInput").style.borderColor ="red"
 
     }
 
     if (contientChiffres(formulaire.prénom)) {
 
         document.getElementById("erreurPrenom").innerText = "";
+        document.getElementById("prénomInput").style.borderColor =""
 
-    } 
-    else {
+    } else {
 
         document.getElementById("erreurPrenom").innerText = "Ce champs peut-être complété qu'avec des lettres !!";
+        document.getElementById("prénomInput").style.borderColor ="red"
 
     }
 
-   
-    if (vérifierChamps(formulaire) && vérifierNumTVA(formulaire.numéroDeTVA) && contientChiffres(formulaire.nom) && contientChiffres(formulaire.prénom)) { // vérification que tout les champs sont bien remplis
+
+    if (vérifierChamps(formulaire) && vérifierNumTVA(formulaire.numéroDeTVA) && contientChiffres(formulaire.nom) && contientChiffres(formulaire.prénom)) { // vérification que tout les champs sont bien remplis et que les conditions précedente sont bien true
 
         total += formulaire.prix;
 
@@ -159,8 +155,7 @@ function envoyerFormulaire() {
 
         afficherTotal();
 
-    } 
-    else {
+    } else {
 
         document.getElementById("erreurChampVide").innerText = "Veuillez remplir tout les champs correctement !!";
 
@@ -172,9 +167,9 @@ function envoyerFormulaire() {
 //fonction supprimer une ligne de commande
 
 /**
- * Fonction qui permet de supprimer une lignedu tableau des commandes et de soustraire du prix total le prix de la commande supprimé.
+ * Fonction qui permet de supprimer une ligne du tableau des commandes et de soustraire du prix total le prix de la commande supprimé.
  * 
- * @param {String} element Balise boutton sur lequel on a cliqué dans le tableau des commandes.
+ * @param {undefined} element Balise boutton sur lequel on a cliqué dans le tableau des commandes.
  * 
  */
 
@@ -194,8 +189,24 @@ function supprimerCommande(element) {
 
 }
 
+/**
+ * cette fonction permet de supprimé les messages d'erreur dans le fomulaire quand on click sur le bouton reset
+ */
 
-//==================FONCTIONAU LANCEMENT DE LA PAGE============================================================================================================================
+function resetErreur (){
+
+    document.getElementById("erreurNom").innerText=""
+    document.getElementById("erreurPrenom").innerText=""
+    document.getElementById("erreurNumTVA").innerText=""
+    document.getElementById("erreurChampVide").innerText=""
+    document.getElementById("numTVAInput").style.borderColor =""
+    document.getElementById("nomInput").style.borderColor =""
+    document.getElementById("prénomInput").style.borderColor =""
+    
+    }
+
+
+//===========================FONCTIONAU LANCEMENT DE LA PAGE============================================================================================================================
 
 
 // affiche le tableau des prix 
@@ -210,7 +221,7 @@ function supprimerCommande(element) {
 
 function listerPrix() {
 
-    let tableau = "<table id=" + "'tableauPrix'" + "><thead><th id=" + "fruit" + ">Fruit</th><th id=" + prix + ">Prix</th></thead><tbody id=" + "'corpsTableauPrix'" + ">";
+    let tableau = "<table id=" + "tableauPrix" + "><thead><th>Fruit</th><th>Prix/Kg</th></thead><tbody>";
 
     let indice = Object.keys(prix);
 
@@ -227,8 +238,7 @@ function listerPrix() {
 
 }
 
-
-// fonction afficher le total en dessous du tableau ( permet d'afficher 0.00 au lancement de la page)
+// fonction afficher le total en dessous du tableau ( permet aussi d'afficher 0.00 au lancement de la page)
 
 /**
  * 
@@ -263,9 +273,6 @@ function vérifierNumTVA(numTVA) {
         return false;
 
     }
-
-
-
 }
 
 /**
@@ -304,7 +311,6 @@ function contientChiffres(string) {
             return false;
 
         }
-
     }
 
     return true

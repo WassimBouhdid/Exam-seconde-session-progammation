@@ -13,7 +13,6 @@ html {
 
   overflow: auto;
   background-image: url(../IMG/background.jfif);
-  text-align: center;
 
 }
 
@@ -23,22 +22,22 @@ html {
    ========================================================================== */
 
 
-h1#titre {
+h1 {
 
   text-align: center;
   font-size: 50px;
   font-weight: bolder;
-  display: inline-block;
+  display:block;
   margin: 10px;
   text-decoration: underline;
 
 }
 
-
-h2 {
+h2{
 
   text-align: center;
-  margin: 5px;
+  margin: 10px;
+  font-weight: bolder;
   text-decoration: underline;
 
 }
@@ -48,43 +47,39 @@ h2 {
    #FORMULAIRE
    ========================================================================== */
 
+form {
 
-input,
-textarea,
-select {
+  border-radius: 1em;
+  width: 485px;
+  padding: 10px;
+  margin-top: 10px;
+  margin-left: 50px;
+  margin-bottom: 10px;
+  float: left;
+  border: 1px solid rgb(0, 0, 0);
+
+}
+
+input,textarea,select {
 
   font-size: 15px;
 
 }
 
 
-form div .labelForm {
+
+label.labelForm {
 
   font-weight: bolder;
   font-size: 16px;
   display: inline-block;
-  width: 210px;
 
 }
 
-
-form {
-
-  border-radius: 1em;
-  width: 510px;
-  padding: 10px;
-  margin-top: 20px;
-  margin-left: 40px;
-  margin-bottom: 10px;
-  float: left;
-  text-align: left;
-  border: 1px solid rgb(0, 0, 0);
-
-}
 
 form div+div {
 
-  margin-top: 1em;
+  margin-top: 1.5em;
 
 }
 
@@ -92,8 +87,9 @@ textarea {
 
   vertical-align: top;
   height: 150px;
-  width: 289px;
+  width: 250px;
   overflow: auto;
+  margin-left: 21px;
 
 }
 
@@ -106,21 +102,18 @@ textarea {
 }
 
 input {
-
+  height: 14px;
   float: right;
-  width: 275px;
+  width: 250px;
 
 }
 
-select#prodInput,
-input#quantInput {
+select#prodInput,input#quantInput {
 
   float: right;
   width: 200px;
 
 }
-
-
 
 
 /* ==========================================================================
@@ -129,27 +122,30 @@ input#quantInput {
 
 #promo {
 
-  float:right;
-  width: 55%;
   border: 1px solid rgb(0, 0, 0);
   border-radius: 1em;
-  margin: 0px 125px 0px 0px;
+  display: inline-block;
+  margin-left: 15%;
+  margin-top: 10px;
+  padding: 10px;
+  width: 35%;
 
 }
 
 div#textPromo {
 
-  margin-left: 100px;
   font-size: 20px;
   font-weight: normal;
   text-align: left;
+  margin-left: 10%;
+  margin-right: 10%;
 
 }
 
 
 #titrePromo {
 
-  font-size: 30px;
+  font-size: 25px;
   font-weight: bolder;
   text-align: center;
 
@@ -161,9 +157,7 @@ div#textPromo {
    ========================================================================== */
 
 
-table,
-th,
-td {
+table,th,td {
 
   border: 1px solid black;
   text-align: center;
@@ -171,10 +165,10 @@ td {
 
 }
 
-div#tableauInfo table {
+ table#tablePrincipale {
 
   display: table;
-  width: 99%;
+  width: 95%;
 
 }
 
@@ -246,11 +240,11 @@ th#supprTableau {
 
   font-size: normal;
   font-weight: bolder;
-  width: 394px;
+  width: 300px;
   float: right;
   text-align: center;
-  border: 1px solid black;
-  margin-right: 10px;
+  background-color: white;
+  margin-right: 2.5%;
 
 }
 
@@ -276,7 +270,7 @@ table#tableauPrix {
 
   width: 55%;
   height: 380px;
-  margin: 10px 0px 20px 145px;
+  margin: 10px 0px 20px 120px;
   float:left;
 
 }
@@ -298,9 +292,7 @@ img#imageGithub {
    BACKGROUND COLOR
    ========================================================================== */
 
-form,
-#promo,
-th {
+form,#promo,th {
 
   background-color: rgb(255, 241, 47);
 
@@ -317,7 +309,7 @@ div.messageErreur {
   color: red;
   font-weight: bolder;
   margin-top: 2px;
-  margin-left: 20px;
+  margin-left: 10px;
   margin-bottom: 2px;
 
 }
