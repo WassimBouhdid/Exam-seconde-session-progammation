@@ -1,7 +1,9 @@
 "use strict"
 
+// addEventListener
 
 document.addEventListener("reset", resetErreur);
+
 
 //================================VARIABLE & CONSTANTE============================================================================================================================
 
@@ -203,7 +205,7 @@ function resetErreur (){
     document.getElementById("nomInput").style.borderColor =""
     document.getElementById("prénomInput").style.borderColor =""
     
-    }
+}
 
 
 //===========================FONCTIONAU LANCEMENT DE LA PAGE============================================================================================================================
@@ -259,6 +261,7 @@ function afficherTotal() {
  * cette fonction permet de vérifier si le numéro de TVA envoyer a partir du formulaire est bien un nombre et contient bien 10 chiffres.
  * 
  * @param {Number} numTVA il s'agit du numéro de TVA qui a été inscrit dans le champs numéro de TVA du formulaire.
+ * @returns {boolean} return true si le numéro de TVA est correct si ce n'est pas le cas alors return false.
  *  
  */
 
@@ -279,6 +282,8 @@ function vérifierNumTVA(numTVA) {
  * cette fonction permet de vérifier si l'un des champs du formulaire envoyé est vide.
  * 
  * @param {object} formulaire il s'agit de l'objet formulaire se trouvant au début de la fonction envoyer formulaire.
+ * @returns {boolean} return true  si aucun des champs est vide si l'un d'entre eux l'est alors return false
+ * 
  */
 
 function vérifierChamps(formulaire) {
@@ -299,7 +304,9 @@ function vérifierChamps(formulaire) {
  * 
  * cette fonction permet de vérifier si il y a un nombre dans la string mis en paramètre.
  * 
- * @param {*} string string dans laquelle on va vérifier si il n'y a pas de chiffre.
+ * @param {String} string string dans laquelle on va vérifier si il n'y a pas de chiffre.
+ * @returns {Boolean} true/false return false si le string contient un ou plusieurs chiffres sinon return true.
+ * 
  */
 
 function contientChiffres(string) {
